@@ -1,0 +1,13 @@
+.custom-file-label{
+  &::after{
+     content: 'Yüklə' !important;
+  }  
+}
+.ref-btn{
+  outline: none;
+  background-color: transparent;
+  border-style: none;
+  span{
+    color: #767C90;
+  }
+}

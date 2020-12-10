@@ -1,0 +1,13 @@
+.card-hover{
+ &:hover{
+  background-color: #2d3448 !important;
+ }
+}
+
+.user-content{
+ h5,
+ p,
+ address{
+   margin-bottom: 0px;
+ }
+}

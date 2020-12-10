@@ -1,0 +1,11 @@
+.lbl-star{
+ position: relative !important;
+}
+.lbl-star::before{
+ content: "\2605";
+ position: absolute;
+ color: red;
+ top: -7px;
+ right: -10px;
+ font-size: smaller;
+}
