@@ -23,6 +23,7 @@ import CategoriesUpdate from '../pages/Categories/CategoriesUpdate.jsx'
 
   // Dashboard
 import Dashboard from "../pages/Dashboard/index";
+import UpdateWord from "../pages/AddWords/UpdateWord";
 
 const authProtectedRoutes = [
 	{ path: "/dashboard", component: Dictionary },
@@ -30,6 +31,7 @@ const authProtectedRoutes = [
 	{ path: "/UserList",exact: true, component: UserList},
 	{ path: "/Dictionary",exact: true, component: Dictionary},
 	{ path: "/AddWord",exact: true, component: AddWord},
+	{ path: "/UpdateWord/:id", component: UpdateWord},
 	{ path: "/References",exact: true, component: References},
 	{path:"/reference-words/:name/:id",component:ReferenceWords},
 	{path:"/reference-edit/:id",component:ReferenceEdit},
@@ -40,7 +42,7 @@ const authProtectedRoutes = [
 	{ path: "/CategoriesList",exact: true, component: CategoriesList},
     {path:"/categories-update/:id",component:CategoriesUpdate},
 	
-
+				
 	
 
 

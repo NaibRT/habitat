@@ -4,7 +4,7 @@ import TTLIstItem from './tt-autocomplete-list-item'
 import Input from '../Input/Input.jsx'
 import { Label } from "reactstrap";
 
-function TTAutocomplete({style,name,validation,getItem,helper,id,labelName,Ref,onChange,placeHolder,data,clearAutocomplete}) {
+function TTAutocomplete({style,name,validation,getItem,helper,id,labelName,Ref,onChange,placeHolder,data,clearAutocomplete,value}) {
 
   //const [autocomplete,setavtocomplete]=useState([]);
 
@@ -100,6 +100,7 @@ function TTAutocomplete({style,name,validation,getItem,helper,id,labelName,Ref,o
            labelName={labelName}
            onKeyDown={inputKeydown}
            onChange={onChange}
+           value={value}
            id={id} 
            type="text" 
            name={name}

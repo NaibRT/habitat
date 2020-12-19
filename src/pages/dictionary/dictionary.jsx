@@ -9,9 +9,12 @@ import SelectBox from "../../components/SelectBox/SelectBox";
 import Input from '../../components/Input/Input.jsx'
 import { Link } from "react-router-dom";
 import Pencil from '../../assets/images/icons/pencil.svg'
+import X from '../../assets/images/icons/x-icon.svg'
+
 import '../../assets/scss/pagination.scss'
 import Pagination from 'react-paginate'
-import { Get } from "../../services/fetchService";
+import { Delete, Get } from "../../services/fetchService";
+import Swal from "sweetalert2";
 
 
 
@@ -127,6 +130,47 @@ const ResponsiveTables=() => {
    })
   }
 
+  const deleteHandler = (id) => {
+
+      let token=JSON.parse(localStorage.getItem('authUser'));
+
+      Swal.fire({
+        title:'Silmək istədiyinizə əminsiz?',
+        icon:'warning',
+        confirmButtonText: 'Təsdiqlə',
+        cancelButtonText:'İmtina',
+        showCancelButton:true,
+        preConfirm:(result) => {
+            if(result){
+                Delete(`${process.env.REACT_APP_API_URL}/words/${id}`,{
+                    headers:{
+                        'Authorization':token&&`${token.token_type}${token.access_token}`
+                    }
+                })
+                .then(()=>{
+                    Swal.fire({
+                        title:'Əməliyyat uğurla yerinə yetirildi',
+                        icon:'success'
+                    })
+                    Get(`${process.env.REACT_APP_API_URL}/words`,{
+                        headers:{
+                            'Authorization':token&&`${token.token_type}${token.access_token}`
+                        }
+                    }).then(res => {
+                        setstate({
+                            loaded:true,
+                            data:res.data,
+                            meta: res.meta
+                        })
+                    })
+                })
+
+            }
+          
+        }         
+      })
+  }
+
         return (
             <React.Fragment>
                 <div className="page-content">
@@ -195,6 +239,7 @@ const ResponsiveTables=() => {
                                                             <Th data-priority="3">Status</Th>
                                                             <Th data-priority="6">Ətraflı</Th>
                                                             <Th data-priority="6">Düzəliş et</Th>
+                                                            <Th data-priority="6">Sil</Th>
                                                         </Tr>
                                                     </Thead>
                                                     <Tbody>
@@ -223,7 +268,10 @@ const ResponsiveTables=() => {
                                                                     </Link>
                                                                 </Td>
                                                                 <Td>
-                                                                <Link className='d-flex align-self-center  align-items-center'  to='/#'><img  src={Pencil}/></Link>
+                                                                <Link className='d-flex align-self-center  align-items-center' to={`/UpdateWord/${x.id}`} ><img  src={Pencil}/></Link>
+                                                                </Td>
+                                                                <Td>
+                                                                <Link className='d-flex align-self-center  align-items-center' onClick={()=>deleteHandler(x.id)}><img  src={X}/></Link>
                                                                 </Td>
                                                               </Tr>
                                                             )

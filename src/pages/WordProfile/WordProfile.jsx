@@ -89,7 +89,12 @@ function WordProfile({match}){
         <React.Fragment>
             <div className="page-content">
                 <div className="container-fluid">
-                    <Breadcrumbs title="Word Profile" breadcrumbItem="Word Profile" />
+                    <Breadcrumbs 
+                        title="Lüğət" 
+                        titleLink="/Dictionary" 
+                        breadcrumbItem="Word Profile"
+
+                         />
                     <Row>
                         <Col>
                             <Card>
