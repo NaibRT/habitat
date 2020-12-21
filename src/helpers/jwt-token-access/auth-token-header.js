@@ -4,6 +4,7 @@ export default function authHeader() {
   if (obj && obj.accessToken) {
     return { Authorization: obj.accessToken }; 	
   } else {
+    console.log('auth removed')
     return {};
   }
 }

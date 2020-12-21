@@ -49,6 +49,8 @@ function* loginUser({ payload: { user, history } }) {
 }
 
 function* logoutUser({ payload: { history} }) {
+    console.log('auth removed')
+
     try {
          localStorage.removeItem("authUser");
          localStorage.removeItem("userData");
